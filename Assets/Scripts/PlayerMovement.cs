@@ -135,9 +135,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") && alive)
         {
-            Time.timeScale = 0.0f;
             marioAnimator.Play("mario-die");
             marioAudio.PlayOneShot(marioDeath);
+            alive = false;
         }
     }
     void PlayJumpSound()
@@ -146,9 +146,8 @@ public class PlayerMovement : MonoBehaviour
     }
     void PlayDeathImpulse()
     {
-        marioBody.AddForce(Vector2.up * 1, ForceMode2D.Impulse);
+        marioBody.AddForce(Vector2.up * 15, ForceMode2D.Impulse);
     }
-
     void GameOverScene()
     {
         alive = false;
