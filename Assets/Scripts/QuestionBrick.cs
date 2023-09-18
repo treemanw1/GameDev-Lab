@@ -34,25 +34,27 @@ public class QuestionBrick : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.GetType() == coin.GetType())
-        {
-            if (!collided)
-            {
-                coinVector = transform.parent.position;
-                coinVector.z = 1;
-                coinVector.y = 0.3f;
-                Instantiate(coin, coinVector, transform.parent.rotation);
-                collided = true;
-                brickAnimator.SetBool("collided", true);
-            }
-            else
-            {
-                // disable brick movement
-                brickBody.bodyType = RigidbodyType2D.Static;
-                brickSpringJoint.enabled = false;
-                // play sound here
-                coinAudio.PlayOneShot(coinAudio.clip);
-            }
-        }
+        Debug.Log("Collided");
+        brickAnimator.SetBool("collided", true);
+        // if (col.gameObject.GetType() == coin.GetType())
+        // {
+        //     if (!collided)
+        //     {
+        //         coinVector = transform.parent.position;
+        //         coinVector.z = 1;
+        //         coinVector.y = 0.3f;
+        //         Instantiate(coin, coinVector, transform.parent.rotation);
+        //         collided = true;
+        //         brickAnimator.SetBool("collided", true);
+        //     }
+        //     else
+        //     {
+        //         // disable brick movement
+        //         brickBody.bodyType = RigidbodyType2D.Static;
+        //         brickSpringJoint.enabled = false;
+        //         // play sound here
+        //         coinAudio.PlayOneShot(coinAudio.clip);
+        //     }
+        // }
     }
 }
