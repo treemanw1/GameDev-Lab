@@ -33,6 +33,7 @@ public class QuestionBrick : MonoBehaviour
             {
                 brickAnimator.SetTrigger("firstCollide");
                 firstCollide = true;
+                coinAudio.PlayDelayed(.3f);
             }
         }
     }

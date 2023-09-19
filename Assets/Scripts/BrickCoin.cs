@@ -26,6 +26,7 @@ public class BrickCoin : MonoBehaviour
             {
                 brickAnimator.SetTrigger("firstCollide");
                 collided = true;
+                coinAudio.PlayDelayed(.3f);
             }
             else
             {
