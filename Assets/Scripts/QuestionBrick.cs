@@ -8,7 +8,8 @@ public class QuestionBrick : MonoBehaviour
 {
     public Animator brickAnimator;
     public AudioSource coinAudio;
-    private bool collided = false;
+    public Transform parentBrick;
+    private bool firstCollide = false;
     void Start()
     {
     }
@@ -26,10 +27,13 @@ public class QuestionBrick : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (!collided)
+        if (col.contacts[0].point.y - .3 < parentBrick.position.y - 0.5)
         {
-            brickAnimator.SetTrigger("firstCollide");
-            collided = true;
+            if (!firstCollide)
+            {
+                brickAnimator.SetTrigger("firstCollide");
+                firstCollide = true;
+            }
         }
     }
 }

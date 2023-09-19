@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brickAnimator: {fileID: 5076028854051979443}
-  coinAudio: {fileID: 0}
+  parentBrick: {fileID: 5076028854051979442}
 --- !u!1 &5076028854051979445
 GameObject:
   m_ObjectHideFlags: 0

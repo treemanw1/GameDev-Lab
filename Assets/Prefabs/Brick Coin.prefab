@@ -308,6 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brickAnimator: {fileID: 6282443532376879975}
   coinAudio: {fileID: 6282443531269289107}
+  parentBrick: {fileID: 6282443532376879974}
 --- !u!82 &6282443531269289107
 AudioSource:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class BrickCoin : MonoBehaviour
     // Start is called before the first frame update
     public Animator brickAnimator;
     public AudioSource coinAudio;
+    public Transform parentBrick;
     private bool collided = false;
     void Start()
     {
@@ -19,14 +20,17 @@ public class BrickCoin : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (!collided)
+        if (col.contacts[0].point.y - .3 < parentBrick.position.y - 0.5)
         {
-            brickAnimator.SetTrigger("firstCollide");
-            collided = true;
-        }
-        else
-        {
-            brickAnimator.SetTrigger("subsequentCollide");
+            if (!collided)
+            {
+                brickAnimator.SetTrigger("firstCollide");
+                collided = true;
+            }
+            else
+            {
+                brickAnimator.SetTrigger("subsequentCollide");
+            }
         }
     }
 }
