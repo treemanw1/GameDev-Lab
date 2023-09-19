@@ -8,9 +8,9 @@ public class QuestionBrick : MonoBehaviour
 {
     public Animator brickAnimator;
     public AudioSource coinAudio;
+    private bool collided = false;
     void Start()
     {
-        brickAnimator.SetBool("collided", false);
     }
 
     // Update is called once per frame
@@ -26,7 +26,10 @@ public class QuestionBrick : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        brickAnimator.SetBool("collided", true);
-        // play coinaudio after certain time
+        if (!collided)
+        {
+            brickAnimator.SetTrigger("firstCollide");
+            collided = true;
+        }
     }
 }

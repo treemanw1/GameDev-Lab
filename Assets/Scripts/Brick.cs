@@ -20,7 +20,6 @@ public class Brick : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("Collidededed");
         brickAnimator.SetBool("collided", true);
     }
 }
