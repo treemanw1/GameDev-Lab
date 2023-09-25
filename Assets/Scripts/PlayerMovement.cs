@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject restartButton;
     public Animator marioAnimator;
     public AudioSource marioAudio;
-    public AudioClip marioDeath;
+    public AudioSource marioDeathAudio;
     // state
     [System.NonSerialized]
     public bool alive = true;
@@ -183,7 +183,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") && alive)
         {
             marioAnimator.Play("mario-die");
-            marioAudio.PlayOneShot(marioDeath);
+            marioAudio.PlayOneShot(marioDeathAudio.clip);
             alive = false;
         }
     }
