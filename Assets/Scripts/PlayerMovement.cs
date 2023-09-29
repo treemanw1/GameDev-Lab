@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -29,6 +30,9 @@ public class PlayerMovement : MonoBehaviour
     private bool jumpedState = false;
     int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7) | (1 << 8);
     public GameObject gameCamera;
+    public Transform marioPosition;
+    public GameManager gameManager;
+    public UnityEvent goombaDeath;
     // Start is called before the first frame update
     void Start()
     {
@@ -102,7 +106,6 @@ public class PlayerMovement : MonoBehaviour
             marioSprite.flipX = true;
             if (marioBody.velocity.x > 0.05f)
                 marioAnimator.SetTrigger("onSkid");
-
         }
 
         else if (value == 1 && !faceRightState)
@@ -182,9 +185,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") && alive)
         {
-            marioAnimator.Play("mario-die");
-            marioAudio.PlayOneShot(marioDeathAudio.clip);
-            alive = false;
+            // if collide top
+            if (marioPosition.position.y > other.transform.position.y + 0.2f)
+            {
+                // call function in EnemyMovement (flatten + remove corpse)
+                gameManager.IncreaseScore(1);
+                goombaDeath.Invoke();
+            }
+            else
+            {
+                marioAnimator.Play("mario-die");
+                marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
+                alive = false;
+            }
         }
     }
     void PlayJumpSound()
@@ -199,8 +212,8 @@ public class PlayerMovement : MonoBehaviour
     {
         alive = false;
         DeathOverlay.gameObject.SetActive(true);
-        finalScoreText.text = jumpOverGoomba.scoreText.text;
         scoreText.SetActive(false);
         restartButton.gameObject.SetActive(false);
+        finalScoreText.text = jumpOverGoomba.scoreText.text;
     }
 }

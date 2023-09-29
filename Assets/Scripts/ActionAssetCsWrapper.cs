@@ -19,27 +19,27 @@ public class ActionAssetCsWrapper : MonoBehaviour
 
     void OnJump(InputAction.CallbackContext context)
     {
-        Debug.Log("Jump!");
+        // Debug.Log("Jump!");
     }
 
     void OnMove(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            Debug.Log("move started");
+            // Debug.Log("move started");
         }
         if (context.canceled)
         {
-            Debug.Log("move stopped");
+            // Debug.Log("move stopped");
         }
 
         float move = context.ReadValue<float>();
-        Debug.Log($"move value: {move}"); // will return null when not pressed
+        // Debug.Log($"move value: {move}"); // will return null when not pressed
 
         // TODO
     }
     void OnJumpHoldPerformed(InputAction.CallbackContext context)
     {
-        Debug.Log("Jump hold");
+        // Debug.Log("Jump hold");
     }
 }
