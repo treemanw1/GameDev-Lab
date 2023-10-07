@@ -4,80 +4,56 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 10;
+    private Rigidbody2D marioBody;
     public float maxSpeed = 20;
     public float upSpeed = 10;
     private bool onGroundState = true;
-    private Rigidbody2D marioBody;
+    private bool jumpedState = false;
     private SpriteRenderer marioSprite;
     private bool faceRightState = true;
-    public GameObject scoreText;
-    public GameObject enemies;
-    public JumpOverGoomba jumpOverGoomba;
-    public GameObject DeathOverlay;
-    public TextMeshProUGUI finalScoreText;
-    public GameObject restartButton;
+    private bool moving = false;
+    public float deathImpulse = 45;
+    public GameObject gameCamera;
     public Animator marioAnimator;
     public AudioSource marioAudio;
     public AudioSource marioDeathAudio;
-    // state
     [System.NonSerialized]
     public bool alive = true;
-    private bool moving = false;
-    private bool jumpedState = false;
     int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7) | (1 << 8);
-    public GameObject gameCamera;
     public Transform marioPosition;
-    public GameManager gameManager;
     public UnityEvent goombaDeath;
+    void Awake()
+    {
+        // subscribe to Game Restart event
+        GameManager.instance.gameRestart.AddListener(GameRestart);
+    }
     // Start is called before the first frame update
     void Start()
     {
-        marioSprite = GetComponent<SpriteRenderer>();
-        // Set to be 30 FPS
         Application.targetFrameRate = 30;
         marioBody = GetComponent<Rigidbody2D>();
+        marioSprite = GetComponent<SpriteRenderer>();
+
+        // update animator state
         marioAnimator.SetBool("onGround", onGroundState);
+        // SceneManager.activeSceneChanged += SetStartingPosition;
     }
-
-    // public void RestartButtonCallback(int input)
-    // {
-    //     Debug.Log("Restart");
-    //     // reset everything
-    //     ResetGame();
-    //     // resume time
-    //     Time.timeScale = 1.0f;
-    // }
-
-    // private void ResetGame()
-    // {
-    //     // reset position
-    //     marioBody.transform.position = new Vector3(-2f, -1f, 0.0f);
-    //     // reset sprite direction
-    //     faceRightState = true;
-    //     marioSprite.flipX = false;
-    //     // reset score
-    //     scoreText.text = "Score: 0";
-    //     // reset Goomba
-    //     foreach (Transform eachChild in enemies.transform)
-    //     {
-    //         eachChild.transform.localPosition = eachChild.GetComponent<EnemyMovement>().startPosition;
-    //     }
-    //     jumpOverGoomba.score = 0;
-    //     // remove Game Over page
-    //     DeathOverlay.gameObject.SetActive(false);
-    //     scoreText.enabled = true;
-    //     restartButton.gameObject.SetActive(true);
-    //     // reset animation
-    //     marioAnimator.SetTrigger("gameRestart");
-    //     alive = true;
-    // }
-
+    public void SetStartingPosition(Scene current, Scene next)
+    {
+        if (next.name == "World 1-2")
+        {
+            // change the position accordingly in your World-1-2 case
+            transform.position = new Vector3(-6, -3.5f, 0.0f);
+        }
+    }
     public void GameRestart()
     {
+        Debug.Log("callback invoked");
         // reset position
         marioBody.transform.position = new Vector3(-5.33f, -4.69f, 0.0f);
         // reset sprite direction
@@ -189,7 +165,7 @@ public class PlayerMovement : MonoBehaviour
             if (marioPosition.position.y > other.transform.position.y + 0.2f)
             {
                 // call function in EnemyMovement (flatten + remove corpse)
-                gameManager.IncreaseScore(1);
+                GameManager.instance.IncreaseScore(1);
                 goombaDeath.Invoke();
             }
             else
@@ -208,12 +184,11 @@ public class PlayerMovement : MonoBehaviour
     {
         marioBody.AddForce(Vector2.up * 15, ForceMode2D.Impulse);
     }
-    void GameOverScene()
-    {
-        alive = false;
-        DeathOverlay.gameObject.SetActive(true);
-        scoreText.SetActive(false);
-        restartButton.gameObject.SetActive(false);
-        finalScoreText.text = jumpOverGoomba.scoreText.text;
-    }
+    // void GameOverScene()
+    // {
+    //     alive = false;
+    //     DeathOverlay.gameObject.SetActive(true);
+    //     scoreText.SetActive(false);
+    //     restartButton.gameObject.SetActive(false);
+    // }
 }

@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     // events
     public UnityEvent gameStart;
@@ -13,10 +14,23 @@ public class GameManager : MonoBehaviour
 
     private int score = 0;
 
+    override public void Awake()
+    {
+        base.Awake();
+        Debug.Log("GM AWAKE");
+    }
     void Start()
     {
         gameStart.Invoke();
         Time.timeScale = 1.0f;
+        // subscribe to scene manager scene change
+        SceneManager.activeSceneChanged += SceneSetup;
+    }
+
+    public void SceneSetup(Scene current, Scene next)
+    {
+        gameStart.Invoke();
+        SetScore(score);
     }
 
     // Update is called once per frame

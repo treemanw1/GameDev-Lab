@@ -17,6 +17,11 @@ public class EnemyMovement : MonoBehaviour
     public bool alive = true;
     public GameObject enemy;
     private float timer = 0.0f;
+
+    void Awake()
+    {
+        GameManager.instance.gameRestart.AddListener(GameRestart);
+    }
     void Start()
     {
         Debug.Log(enemy.transform.position);
@@ -73,7 +78,6 @@ public class EnemyMovement : MonoBehaviour
     }
     public void GoombaDeath()
     {
-        Debug.Log("Goomba killed!");
         //flatten
         transform.localScale = new Vector3(transform.localScale.x, .5f, transform.localScale.z);
         transform.localPosition = new Vector3(transform.position.x, transform.localPosition.y - .2f, transform.position.z);

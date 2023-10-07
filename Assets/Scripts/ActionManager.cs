@@ -3,12 +3,17 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
+// public class ActionManager : Singleton<ActionManager>
 public class ActionManager : MonoBehaviour
 {
     public UnityEvent jump;
     public UnityEvent jumpHold;
     public UnityEvent<int> moveCheck;
-
+    // override public void Awake()
+    // {
+    //     base.Awake();
+    //     Debug.Log("AM AWAKE");
+    // }
     public void OnJumpHoldAction(InputAction.CallbackContext context)
     {
         if (context.started)

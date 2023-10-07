@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    void Awake()
+    {
+        // other instructions
+        GameManager.instance.gameRestart.AddListener(GameRestart);
+    }
     // Start is called before the first frame update
     void Start()
     {
