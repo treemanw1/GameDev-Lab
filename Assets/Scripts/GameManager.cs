@@ -14,11 +14,6 @@ public class GameManager : Singleton<GameManager>
 
     private int score = 0;
 
-    override public void Awake()
-    {
-        base.Awake();
-        Debug.Log("GM AWAKE");
-    }
     void Start()
     {
         gameStart.Invoke();

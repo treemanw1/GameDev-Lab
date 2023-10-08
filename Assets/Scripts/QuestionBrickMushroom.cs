@@ -1,0 +1,38 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+
+public class QuestionBrickMushroom : MonoBehaviour
+{
+    public Animator brickAnimator;
+    public AudioSource coinAudio;
+    public Transform parentBrick;
+    private bool firstCollide = false;
+    void Start()
+    {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+    }
+
+    void FixedUpdate()
+    {
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.contacts[0].point.y - .3 < parentBrick.position.y - 0.5)
+        {
+            if (!firstCollide)
+            {
+                brickAnimator.SetTrigger("firstCollide");
+                firstCollide = true;
+                // coinAudio.PlayDelayed(.3f);
+            }
+        }
+    }
+}

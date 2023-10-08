@@ -18,10 +18,7 @@ public class MagicMushroomPowerup : BasePowerup
         if (col.gameObject.CompareTag("Player") && spawned)
         {
             // TODO: do something when colliding with Player
-
-            // then destroy powerup (optional)
             DestroyPowerup();
-
         }
         else if (col.gameObject.layer == 10) // else if hitting Pipe, flip travel direction
         {
@@ -29,7 +26,6 @@ public class MagicMushroomPowerup : BasePowerup
             {
                 goRight = !goRight;
                 rigidBody.AddForce(Vector2.right * 3 * (goRight ? 1 : -1), ForceMode2D.Impulse);
-
             }
         }
     }
@@ -37,6 +33,8 @@ public class MagicMushroomPowerup : BasePowerup
     // interface implementation
     public override void SpawnPowerup()
     {
+        // change Powerup to Dynamic
+        this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         spawned = true;
         rigidBody.AddForce(Vector2.right * 3, ForceMode2D.Impulse); // move to the right
     }

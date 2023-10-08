@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3646307577071516525}
   - component: {fileID: 3646307577071516526}
   - component: {fileID: 3646307577071516524}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Pipe-body
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 3646307578444826582}
   - component: {fileID: 3646307578444826583}
   - component: {fileID: 2254469209817824965}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Pipe-head
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7403240894032648177}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Pipe-medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
