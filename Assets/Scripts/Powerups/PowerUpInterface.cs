@@ -22,4 +22,3 @@ public interface IPowerupApplicable
 {
     // public void RequestPowerupEffect(Powerup i);
 }
-

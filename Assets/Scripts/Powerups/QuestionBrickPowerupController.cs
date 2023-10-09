@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestionBrickPowerupController : MonoBehaviour, IPowerupController
+public class QuestionBrickPowerupController : MonoBehaviour, PowerupControllerInterface
 {
     public Animator powerupAnimator;
     public BasePowerup powerup; // reference to this question box's powerup
@@ -17,7 +17,8 @@ public class QuestionBrickPowerupController : MonoBehaviour, IPowerupController
     // used by animator
     public void Disable()
     {
-        this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-        transform.localPosition = new Vector3(0, 0, 0);
+        // this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        // transform.localPosition = new Vector3(0, 0, 0);
     }
+
 }

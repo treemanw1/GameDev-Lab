@@ -10,20 +10,6 @@ public class QuestionBrick : MonoBehaviour
     public AudioSource coinAudio;
     public Transform parentBrick;
     private bool firstCollide = false;
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void FixedUpdate()
-    {
-
-    }
 
     void OnCollisionEnter2D(Collision2D col)
     {
