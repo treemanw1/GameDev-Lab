@@ -8,16 +8,23 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 10;
+    public GameConstants gameConstants;
+    float deathImpulse;
+    float upSpeed;
+    float maxSpeed;
+    float speed;
+
+
+    // public float speed = 10;
     private Rigidbody2D marioBody;
-    public float maxSpeed = 20;
-    public float upSpeed = 10;
+    // public float maxSpeed = 20;
+    // public float upSpeed = 10;
     private bool onGroundState = true;
     private bool jumpedState = false;
     private SpriteRenderer marioSprite;
     private bool faceRightState = true;
     private bool moving = false;
-    public float deathImpulse = 45;
+    // public float deathImpulse = 45;
     public GameObject gameCamera;
     public Animator marioAnimator;
     public AudioSource marioAudio;
@@ -35,6 +42,12 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Set constants
+        speed = gameConstants.speed;
+        maxSpeed = gameConstants.maxSpeed;
+        deathImpulse = gameConstants.deathImpulse;
+        upSpeed = gameConstants.upSpeed;
+
         Application.targetFrameRate = 30;
         marioBody = GetComponent<Rigidbody2D>();
         marioSprite = GetComponent<SpriteRenderer>();
@@ -184,11 +197,9 @@ public class PlayerMovement : MonoBehaviour
     {
         marioBody.AddForce(Vector2.up * 15, ForceMode2D.Impulse);
     }
-    // void GameOverScene()
-    // {
-    //     alive = false;
-    //     DeathOverlay.gameObject.SetActive(true);
-    //     scoreText.SetActive(false);
-    //     restartButton.gameObject.SetActive(false);
-    // }
+    void GameOverScene()
+    {
+        alive = false;
+        GameManager.instance.GameOver();
+    }
 }

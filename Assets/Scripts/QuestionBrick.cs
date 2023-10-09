@@ -15,6 +15,7 @@ public class QuestionBrick : MonoBehaviour
     {
         if (col.contacts[0].point.y - .3 < parentBrick.position.y - 0.5)
         {
+            Debug.Log("Collide bottom");
             if (!firstCollide)
             {
                 brickAnimator.SetTrigger("firstCollide");

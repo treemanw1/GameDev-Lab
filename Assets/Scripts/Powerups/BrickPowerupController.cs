@@ -14,12 +14,10 @@ public class BrickPowerupController : MonoBehaviour, PowerupControllerInterface
     {
         if (isBreakable)
         {
-            Debug.Log("break true");
             brickAnimator.SetBool("break?", true);
         }
         else
         {
-            Debug.Log("break false");
             brickAnimator.SetBool("break?", false);
         }
     }

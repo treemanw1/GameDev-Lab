@@ -495,3 +495,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerupAnimator: {fileID: 1658187873682536430}
   powerup: {fileID: 8866443608857214496}
+  parentBrick: {fileID: 9126370614586417278}
