@@ -84,6 +84,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(marioAnimator);
+        Debug.Log("anim");
+        Debug.Log(marioBody);
+        Debug.Log("body");
         marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.velocity.x));
     }
 

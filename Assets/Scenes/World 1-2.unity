@@ -1838,10 +1838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ba83247a58feb4e8406efd8f40033b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 150
-  maxSpeed: 5
-  upSpeed: 30
-  deathImpulse: 45
+  gameConstants: {fileID: 11400000, guid: 2836725aaaa2e3745a96a7e24005a21d, type: 2}
   gameCamera: {fileID: 1462454713}
   marioAnimator: {fileID: 980853996}
   marioAudio: {fileID: 980853995}
@@ -2398,6 +2395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecfda8f30c403d4c9aaaca1daf60c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameScore: {fileID: 11400000, guid: 148b207845397c1428ca5ee55fb233b9, type: 2}
   gameStart:
     m_PersistentCalls:
       m_Calls: []
@@ -2961,7 +2959,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b0dd5b4ac4f4994aae54d96877ff687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highscoreText: {fileID: 0}
+  gameScore: {fileID: 0}
   scoreText: {fileID: 1436090674}
+  finalScoreText: {fileID: 0}
   restartButton: {fileID: 1436090673}
   deathOverlay: {fileID: 1436090672}
 --- !u!114 &1436090677
