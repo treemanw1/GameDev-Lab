@@ -25,6 +25,8 @@ public class GameManager : Singleton<GameManager>
     public void SceneSetup(Scene current, Scene next)
     {
         gameStart.Invoke();
+        Debug.Log("SceneSetup");
+        Debug.Log(gameScore.Value);
         SetScore(gameScore.Value);
     }
     public void GameRestart()
@@ -42,6 +44,8 @@ public class GameManager : Singleton<GameManager>
     }
     public void SetScore(int score)
     {
+        // Debug.Log("GameManager SetScore()");
+        // Debug.Log(score);
         scoreChange.Invoke(score);
     }
     public void GameOver()

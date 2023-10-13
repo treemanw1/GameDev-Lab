@@ -23,6 +23,6 @@ public class LoadingScene : MonoBehaviour
     }
     public void ReturnToMain()
     {
-        SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync("Main Menu", LoadSceneMode.Single);
     }
 }

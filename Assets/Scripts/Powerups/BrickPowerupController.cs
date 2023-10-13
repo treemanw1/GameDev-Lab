@@ -9,7 +9,6 @@ public class BrickPowerupController : MonoBehaviour, PowerupControllerInterface
     public Animator powerupAnimator;
     public Animator brickAnimator;
     public BasePowerup powerup;
-
     void Awake()
     {
         if (isBreakable)
@@ -23,7 +22,7 @@ public class BrickPowerupController : MonoBehaviour, PowerupControllerInterface
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player" && !powerup.hasSpawned)
+        if (other.gameObject.tag == "Player" && !powerup.hasSpawned && other.contacts[0].point.y - .3 < transform.parent.transform.position.y - 0.5)
         {
             // spawn the powerup
             powerupAnimator.SetTrigger("spawned");

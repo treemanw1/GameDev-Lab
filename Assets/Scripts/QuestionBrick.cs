@@ -10,12 +10,14 @@ public class QuestionBrick : MonoBehaviour
     public AudioSource coinAudio;
     public Transform parentBrick;
     private bool firstCollide = false;
-
+    void Start()
+    {
+        GameManager.instance.gameRestart.AddListener(GameRestart);
+    }
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.contacts[0].point.y - .3 < parentBrick.position.y - 0.5)
         {
-            Debug.Log("Collide bottom");
             if (!firstCollide)
             {
                 brickAnimator.SetTrigger("firstCollide");
@@ -23,5 +25,10 @@ public class QuestionBrick : MonoBehaviour
                 coinAudio.PlayDelayed(.3f);
             }
         }
+    }
+    public void GameRestart()
+    {
+        brickAnimator.SetTrigger("reset");
+        firstCollide = false;
     }
 }

@@ -11,6 +11,7 @@ public class BrickCoin : MonoBehaviour
     private bool collided = false;
     void Start()
     {
+        GameManager.instance.gameRestart.AddListener(GameRestart);
     }
 
     // Update is called once per frame
@@ -33,5 +34,10 @@ public class BrickCoin : MonoBehaviour
                 brickAnimator.SetTrigger("subsequentCollide");
             }
         }
+    }
+    public void GameRestart()
+    {
+        brickAnimator.SetTrigger("reset");
+        collided = false;
     }
 }

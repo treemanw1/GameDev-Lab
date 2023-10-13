@@ -540,6 +540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 160471790}
   - component: {fileID: 160471791}
+  - component: {fileID: 160471792}
   m_Layer: 0
   m_Name: Enemies
   m_TagString: Untagged
@@ -575,6 +576,103 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bff783bdf6ed064385e9887c4c81fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathAudio: {fileID: 160471792}
+--- !u!82 &160471792
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160471789}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d84415726495b4d46b5a557ed2a97cfa, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &193059083
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,6 +1339,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7312944581963556342, guid: 70d3c224e24d5c440b473e68b035eb03, type: 3}
   m_PrefabInstance: {fileID: 738026226}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &878932342 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8544261805753866391, guid: 6ecc5e3375b554c4cbab4e6e7186d23e, type: 3}
+  m_PrefabInstance: {fileID: 1436090670}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &919272694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,7 +1471,7 @@ PrefabInstance:
     - target: {fileID: 6063901977376538530, guid: 023d53dd774f3084aba859605117bd7e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300014, guid: 7eb68ac47e5fe4bbca37c767951ce034, type: 3}
+      objectReference: {fileID: 21300000, guid: 7eb68ac47e5fe4bbca37c767951ce034, type: 3}
     - target: {fileID: 6063901977376538532, guid: 023d53dd774f3084aba859605117bd7e, type: 3}
       propertyPath: m_Name
       value: Goomba
@@ -1424,17 +1527,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6063901977376538533, guid: 023d53dd774f3084aba859605117bd7e, type: 3}
   m_PrefabInstance: {fileID: 971722848}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &971722850 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6063901977376538529, guid: 023d53dd774f3084aba859605117bd7e, type: 3}
-  m_PrefabInstance: {fileID: 971722848}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6415eb499df83bb4799397ddd7d00489, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &977172090
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,10 +1939,10 @@ MonoBehaviour:
   goombaDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 971722850}
-        m_TargetAssemblyTypeName: EnemyMovement, Assembly-CSharp
+      - m_Target: {fileID: 160471791}
+        m_TargetAssemblyTypeName: EnemyManager, Assembly-CSharp
         m_MethodName: GoombaDeath
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2579,7 +2671,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1910605274, guid: a6206353c4eeefa4d8089d301a0aa8df, type: 3}
+    - {fileID: 1910605275, guid: a6206353c4eeefa4d8089d301a0aa8df, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a6206353c4eeefa4d8089d301a0aa8df, type: 3}
 --- !u!4 &1202742083 stripped
 Transform:
@@ -2796,14 +2890,14 @@ PrefabInstance:
     - target: {fileID: 8544261805639826260, guid: 6ecc5e3375b554c4cbab4e6e7186d23e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1500692987}
     - target: {fileID: 8544261805639826260, guid: 6ecc5e3375b554c4cbab4e6e7186d23e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GameRestart
+      value: ButtonClick
       objectReference: {fileID: 0}
     - target: {fileID: 8544261805639826260, guid: 6ecc5e3375b554c4cbab4e6e7186d23e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GameManager, Assembly-CSharp
+      value: ButtonController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8544261806065768712, guid: 6ecc5e3375b554c4cbab4e6e7186d23e, type: 3}
       propertyPath: scoreText
@@ -2959,10 +3053,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b0dd5b4ac4f4994aae54d96877ff687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highscoreText: {fileID: 0}
-  gameScore: {fileID: 0}
+  highscoreText: {fileID: 1517301707}
+  gameScore: {fileID: 11400000, guid: 148b207845397c1428ca5ee55fb233b9, type: 2}
   scoreText: {fileID: 1436090674}
-  finalScoreText: {fileID: 0}
+  finalScoreText: {fileID: 878932342}
   restartButton: {fileID: 1436090673}
   deathOverlay: {fileID: 1436090672}
 --- !u!114 &1436090677
@@ -3360,6 +3454,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 980854002}
   endLimit: {fileID: 1460556060}
+--- !u!1 &1500692986 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8544261805639826258, guid: 6ecc5e3375b554c4cbab4e6e7186d23e, type: 3}
+  m_PrefabInstance: {fileID: 1436090670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1500692987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500692986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab55b34114b3b4547bf013ac53574d31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1517301707 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2583303285451061434, guid: 6ecc5e3375b554c4cbab4e6e7186d23e, type: 3}
+  m_PrefabInstance: {fileID: 1436090670}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1619441544
 GameObject:
   m_ObjectHideFlags: 0

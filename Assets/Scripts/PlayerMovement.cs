@@ -31,9 +31,9 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource marioDeathAudio;
     [System.NonSerialized]
     public bool alive = true;
-    int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7) | (1 << 8);
+    int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7) | (1 << 8) | (1 << 10);
     public Transform marioPosition;
-    public UnityEvent goombaDeath;
+    public UnityEvent<Vector3> goombaDeath;
     void Awake()
     {
         // subscribe to Game Restart event
@@ -66,7 +66,6 @@ public class PlayerMovement : MonoBehaviour
     }
     public void GameRestart()
     {
-        Debug.Log("callback invoked");
         // reset position
         marioBody.transform.position = new Vector3(-5.33f, -4.69f, 0.0f);
         // reset sprite direction
@@ -84,10 +83,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(marioAnimator);
-        Debug.Log("anim");
-        Debug.Log(marioBody);
-        Debug.Log("body");
         marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.velocity.x));
     }
 
@@ -176,14 +171,16 @@ public class PlayerMovement : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.tag);
         if (other.gameObject.CompareTag("Enemy") && alive)
         {
             // if collide top
             if (marioPosition.position.y > other.transform.position.y + 0.2f)
             {
                 // call function in EnemyMovement (flatten + remove corpse)
+                Debug.Log("KillGoomba IncreaseScore()");
                 GameManager.instance.IncreaseScore(1);
-                goombaDeath.Invoke();
+                goombaDeath.Invoke(other.transform.position);
             }
             else
             {

@@ -2,25 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class HUDManager : MonoBehaviour
 {
     public GameObject highscoreText;
     public IntVariable gameScore;
-
-    private Vector3[] scoreTextPosition = {
-        new Vector3(-827, 472, 0),
-        new Vector3(0, 0, 0)
-        };
-    private Vector3[] restartButtonPosition = {
-        new Vector3(868, 444, 0),
-        new Vector3(0, -179, 0)
-    };
-
     public GameObject scoreText;
     public GameObject finalScoreText;
     public GameObject restartButton;
-
     public GameObject deathOverlay;
     void Awake()
     {
@@ -29,6 +19,7 @@ public class HUDManager : MonoBehaviour
         GameManager.instance.gameOver.AddListener(GameOver);
         GameManager.instance.gameRestart.AddListener(GameStart);
         GameManager.instance.scoreChange.AddListener(SetScore);
+        gameScore.Value = 0;
     }
 
     public void GameStart()
@@ -43,7 +34,9 @@ public class HUDManager : MonoBehaviour
 
     public void SetScore(int score)
     {
-        scoreText.GetComponent<TextMeshProUGUI>().text = "Score: " + score.ToString();
+        // Debug.Log("HUDManager SetScore");
+        // Debug.Log(score);
+        scoreText.GetComponent<TextMeshProUGUI>().text = "SCORE: " + score.ToString();
     }
 
 
@@ -53,11 +46,15 @@ public class HUDManager : MonoBehaviour
         scoreText.SetActive(false);
         restartButton.SetActive(false);
 
-        finalScoreText.GetComponent<TextMeshProUGUI>().text = "Score: " + gameScore.Value.ToString();
+        finalScoreText.GetComponent<TextMeshProUGUI>().text = "SCORE: " + gameScore.Value.ToString();
 
         // set highscore
         highscoreText.GetComponent<TextMeshProUGUI>().text = "TOP- " + gameScore.previousHighestValue.ToString("D6");
         // show
         highscoreText.SetActive(true);
+    }
+    public void ReturnToMain()
+    {
+        SceneManager.LoadSceneAsync("Main Menu", LoadSceneMode.Single);
     }
 }

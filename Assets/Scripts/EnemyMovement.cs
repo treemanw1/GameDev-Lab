@@ -11,24 +11,26 @@ public class EnemyMovement : MonoBehaviour
     private int moveRight = -1;
     private Vector2 velocity;
     private Rigidbody2D enemyBody;
-    public Vector3 startPosition = new Vector3(0.0f, 0.0f, 0.0f);
+    public Vector3 startPosition;
     // state
     [System.NonSerialized]
     public bool alive = true;
     public GameObject enemy;
     private float timer = 0.0f;
+    public Vector3 ogLocalscale;
 
     void Awake()
     {
-        GameManager.instance.gameRestart.AddListener(GameRestart);
+        ogLocalscale = transform.localScale;
+        startPosition = transform.position;
     }
     void Start()
     {
-        Debug.Log(enemy.transform.position);
         enemyBody = GetComponent<Rigidbody2D>();
         // get the starting position
         originalX = transform.position.x;
         ComputeVelocity();
+        GameManager.instance.gameRestart.AddListener(GameRestart);
     }
     void ComputeVelocity()
     {
@@ -70,18 +72,19 @@ public class EnemyMovement : MonoBehaviour
     }
     public void GameRestart()
     {
-        Debug.Log("Game restart!");
+        enemy.SetActive(true);
+        alive = true;
+        GetComponent<BoxCollider2D>().enabled = true;
         transform.localPosition = startPosition;
         originalX = transform.position.x;
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        transform.localScale = ogLocalscale;
         moveRight = -1;
+        timer = 0.0f;
         ComputeVelocity();
     }
-    public void GoombaDeath()
+    public void Die()
     {
-        //flatten
-        transform.localScale = new Vector3(transform.localScale.x, .5f, transform.localScale.z);
-        transform.localPosition = new Vector3(transform.position.x, transform.localPosition.y - .2f, transform.position.z);
         alive = false;
-        enemy.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
     }
 }
