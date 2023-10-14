@@ -30,7 +30,7 @@ public class EnemyMovement : MonoBehaviour
         // get the starting position
         originalX = transform.position.x;
         ComputeVelocity();
-        GameManager.instance.gameRestart.AddListener(GameRestart);
+        // GameManager.instance.gameRestart.AddListener(GameRestart);
     }
     void ComputeVelocity()
     {

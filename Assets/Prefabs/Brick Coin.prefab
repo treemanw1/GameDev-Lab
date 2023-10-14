@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 6282443531269289102}
   - component: {fileID: 6282443531269289106}
   - component: {fileID: 3274500025452196783}
+  - component: {fileID: 1898877148067410001}
   m_Layer: 7
   m_Name: Brick
   m_TagString: Untagged
@@ -289,6 +290,34 @@ MonoBehaviour:
   powerupAnimator: {fileID: 364685147667921673}
   brickAnimator: {fileID: 6282443532376879975}
   powerup: {fileID: 5512222145609657670}
+--- !u!114 &1898877148067410001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282443531269289100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1c3abe536f48a479370feeaf17da74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 11c4971bf644fa44bba6976d60cb9694, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6282443531269289106}
+        m_TargetAssemblyTypeName: BrickCoin, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6282443532376879973
 GameObject:
   m_ObjectHideFlags: 0

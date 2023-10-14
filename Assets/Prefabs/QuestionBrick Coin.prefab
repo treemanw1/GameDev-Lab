@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 445400515807049620}
   - component: {fileID: 8866443608857214496}
+  - component: {fileID: 6433833026399313619}
   m_Layer: 7
   m_Name: Powerup
   m_TagString: Untagged
@@ -48,6 +49,49 @@ MonoBehaviour:
   type: 0
   spawned: 0
   powerupAnimator: {fileID: 1658187873682536430}
+  incrementscore:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: c3c1e110200ea5549a54fe3754fa52f4, type: 2}
+        m_TargetAssemblyTypeName: GameEvent`1[[System.Int32, mscorlib
+        m_MethodName: Raise
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6433833026399313619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2782913457808715674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1c3abe536f48a479370feeaf17da74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 11c4971bf644fa44bba6976d60cb9694, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8866443608857214496}
+        m_TargetAssemblyTypeName: CoinPowerup, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7312944581963556343
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +274,7 @@ GameObject:
   - component: {fileID: 1014394487021551030}
   - component: {fileID: 2042404556611585662}
   - component: {fileID: 8375645057614534969}
+  - component: {fileID: 1174480895735642228}
   m_Layer: 8
   m_Name: Question Brick
   m_TagString: Untagged
@@ -497,3 +542,43 @@ MonoBehaviour:
   powerupAnimator: {fileID: 1658187873682536430}
   powerup: {fileID: 8866443608857214496}
   parentBrick: {fileID: 9126370614586417278}
+--- !u!114 &1174480895735642228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9126370614586417279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1c3abe536f48a479370feeaf17da74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 11c4971bf644fa44bba6976d60cb9694, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 92825052416644028}
+        m_TargetAssemblyTypeName: QuestionBrick, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8375645057614534969}
+        m_TargetAssemblyTypeName: QuestionBrickPowerupController, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

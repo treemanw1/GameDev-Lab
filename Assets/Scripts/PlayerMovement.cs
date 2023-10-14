@@ -13,8 +13,6 @@ public class PlayerMovement : MonoBehaviour
     float upSpeed;
     float maxSpeed;
     float speed;
-
-
     // public float speed = 10;
     private Rigidbody2D marioBody;
     // public float maxSpeed = 20;
@@ -34,10 +32,12 @@ public class PlayerMovement : MonoBehaviour
     int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7) | (1 << 8) | (1 << 10);
     public Transform marioPosition;
     public UnityEvent<Vector3> goombaDeath;
+    public UnityEvent incrementScore;
+    public UnityEvent gameOver;
+    private float timer = 0.0f;
     void Awake()
     {
-        // subscribe to Game Restart event
-        GameManager.instance.gameRestart.AddListener(GameRestart);
+        // GameManager.instance.gameRestart.AddListener(GameRestart);
     }
     // Start is called before the first frame update
     void Start()
@@ -64,25 +64,18 @@ public class PlayerMovement : MonoBehaviour
             transform.position = new Vector3(-6, -3.5f, 0.0f);
         }
     }
-    public void GameRestart()
-    {
-        // reset position
-        marioBody.transform.position = new Vector3(-5.33f, -4.69f, 0.0f);
-        // reset sprite direction
-        faceRightState = true;
-        marioSprite.flipX = false;
-
-        // reset animation
-        marioAnimator.SetTrigger("gameRestart");
-        alive = true;
-
-        // reset camera position
-        gameCamera.transform.position = new Vector3(0, 0, -10);
-    }
 
     // Update is called once per frame
     void Update()
     {
+        if (!alive)
+        {
+            timer += Time.deltaTime;
+            if (timer >= .5f)
+            {
+                gameOver.Invoke();
+            }
+        }
         marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.velocity.x));
     }
 
@@ -171,24 +164,36 @@ public class PlayerMovement : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.tag);
         if (other.gameObject.CompareTag("Enemy") && alive)
         {
             // if collide top
             if (marioPosition.position.y > other.transform.position.y + 0.2f)
             {
-                // call function in EnemyMovement (flatten + remove corpse)
-                Debug.Log("KillGoomba IncreaseScore()");
-                GameManager.instance.IncreaseScore(1);
+                incrementScore.Invoke();
                 goombaDeath.Invoke(other.transform.position);
             }
             else
             {
+                alive = false;
                 marioAnimator.Play("mario-die");
                 marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
-                alive = false;
             }
         }
+    }
+    public void GameRestart()
+    {
+        // reset position
+        marioBody.transform.position = new Vector3(-5.33f, -4.69f, 0.0f);
+        // reset sprite direction
+        faceRightState = true;
+        marioSprite.flipX = false;
+
+        // reset animation
+        marioAnimator.SetTrigger("gameRestart");
+        alive = true;
+        timer = 0f;
+        // reset camera position
+        // gameCamera.transform.position = new Vector3(0, 0, -10);
     }
     void PlayJumpSound()
     {
@@ -196,11 +201,6 @@ public class PlayerMovement : MonoBehaviour
     }
     void PlayDeathImpulse()
     {
-        marioBody.AddForce(Vector2.up * 15, ForceMode2D.Impulse);
-    }
-    void GameOverScene()
-    {
-        alive = false;
-        GameManager.instance.GameOver();
+        marioBody.AddForce(Vector2.up * 30, ForceMode2D.Impulse);
     }
 }

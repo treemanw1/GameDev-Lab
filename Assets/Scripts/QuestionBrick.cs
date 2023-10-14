@@ -12,7 +12,7 @@ public class QuestionBrick : MonoBehaviour
     private bool firstCollide = false;
     void Start()
     {
-        GameManager.instance.gameRestart.AddListener(GameRestart);
+        // GameManager.instance.gameRestart.AddListener(GameRestart);
     }
     void OnCollisionEnter2D(Collision2D col)
     {

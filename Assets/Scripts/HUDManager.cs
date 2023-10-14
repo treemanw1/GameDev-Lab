@@ -15,33 +15,39 @@ public class HUDManager : MonoBehaviour
     void Awake()
     {
         // subscribe to events
-        GameManager.instance.gameStart.AddListener(GameStart);
-        GameManager.instance.gameOver.AddListener(GameOver);
-        GameManager.instance.gameRestart.AddListener(GameStart);
-        GameManager.instance.scoreChange.AddListener(SetScore);
+        // GameManager.instance.gameStart.AddListener(GameStart);
+        // GameManager.instance.gameOver.AddListener(GameOver);
+        // GameManager.instance.gameRestart.AddListener(GameStart);
+        // GameManager.instance.scoreChange.AddListener(SetScore);
         gameScore.Value = 0;
     }
+    void Update()
+    {
 
+    }
     public void GameStart()
     {
-        // hide gameover panel
+        Time.timeScale = 1.0f;
+        gameScore.Value = 0;
+        scoreText.GetComponent<TextMeshProUGUI>().text = "SCORE: " + gameScore.Value.ToString();
         deathOverlay.SetActive(false);
         scoreText.SetActive(true);
         restartButton.SetActive(true);
-        // scoreText.transform.localPosition = scoreTextPosition[0];
-        // restartButton.localPosition = restartButtonPosition[0];
     }
-
-    public void SetScore(int score)
+    // public void SetScore(int score)
+    // {
+    //     // Debug.Log("HUDManager SetScore");
+    //     // Debug.Log(score);
+    //     scoreText.GetComponent<TextMeshProUGUI>().text = "SCORE: " + score.ToString();
+    // }
+    public void IncrementScore(int score)
     {
-        // Debug.Log("HUDManager SetScore");
-        // Debug.Log(score);
-        scoreText.GetComponent<TextMeshProUGUI>().text = "SCORE: " + score.ToString();
+        gameScore.ApplyChange(score);
+        scoreText.GetComponent<TextMeshProUGUI>().text = "SCORE: " + gameScore.Value.ToString();
     }
-
-
     public void GameOver()
     {
+        Time.timeScale = 0.0f;
         deathOverlay.SetActive(true);
         scoreText.SetActive(false);
         restartButton.SetActive(false);

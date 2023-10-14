@@ -1,19 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CoinPowerup : BasePowerup
 {
     public Animator powerupAnimator;
+    public UnityEvent incrementscore;
     protected override void Start()
     {
         base.Start(); // call base class Start()
         this.type = PowerupType.Coin;
-        GameManager.instance.gameRestart.AddListener(GameRestart);
+        // GameManager.instance.gameRestart.AddListener(GameRestart);
     }
     public void IncreaseScore()
     {
-        GameManager.instance.IncreaseScore(1);
+        incrementscore.Invoke();
     }
     // interface implementation
     public override void SpawnPowerup()

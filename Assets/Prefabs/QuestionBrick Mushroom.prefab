@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8713165857077446794}
   - component: {fileID: 1653149879567957549}
   - component: {fileID: 4158801124587159138}
+  - component: {fileID: 4457300493998493380}
   m_Layer: 9
   m_Name: Powerup
   m_TagString: Untagged
@@ -50,7 +51,6 @@ MonoBehaviour:
   type: 1
   spawned: 0
   powerupAnimator: {fileID: 6669273243536357091}
-  shroomSprite: {fileID: 7102236948320277320}
 --- !u!61 &1653149879567957549
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -98,6 +98,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4457300493998493380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68756724948384924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1c3abe536f48a479370feeaf17da74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 11c4971bf644fa44bba6976d60cb9694, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8713165857077446794}
+        m_TargetAssemblyTypeName: MagicMushroomPowerup, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7102236948320277320
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,6 +379,7 @@ GameObject:
   - component: {fileID: 1182931504101239139}
   - component: {fileID: 4294391030049378384}
   - component: {fileID: 7646013049225273163}
+  - component: {fileID: 706759212303128797}
   m_Layer: 8
   m_Name: Question Brick
   m_TagString: Untagged
@@ -638,3 +667,43 @@ SpringJoint2D:
   m_Distance: 1
   m_DampingRatio: 0
   m_Frequency: 5
+--- !u!114 &706759212303128797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9126370614586417279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1c3abe536f48a479370feeaf17da74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 11c4971bf644fa44bba6976d60cb9694, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4294391030049378384}
+        m_TargetAssemblyTypeName: QuestionBrick, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5085543796234373118}
+        m_TargetAssemblyTypeName: QuestionBrickPowerupController, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

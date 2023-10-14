@@ -44,8 +44,6 @@ public class GameManager : Singleton<GameManager>
     }
     public void SetScore(int score)
     {
-        // Debug.Log("GameManager SetScore()");
-        // Debug.Log(score);
         scoreChange.Invoke(score);
     }
     public void GameOver()

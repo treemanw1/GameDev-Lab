@@ -8,7 +8,7 @@ public class EnemyManager : MonoBehaviour
     public AudioSource deathAudio;
     void Start()
     {
-        GameManager.instance.gameRestart.AddListener(GameRestart);
+        // GameManager.instance.gameRestart.AddListener(GameRestart);
     }
     public void GameRestart()
     {

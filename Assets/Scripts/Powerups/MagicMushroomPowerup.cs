@@ -18,7 +18,7 @@ public class MagicMushroomPowerup : BasePowerup
         base.Start(); // call base class Start()
         powerupAnimator.ResetTrigger("reset");
         this.type = PowerupType.MagicMushroom;
-        GameManager.instance.gameRestart.AddListener(GameRestart);
+        // GameManager.instance.gameRestart.AddListener(GameRestart);
     }
 
     void OnCollisionEnter2D(Collision2D col)
