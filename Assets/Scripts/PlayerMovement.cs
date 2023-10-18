@@ -36,7 +36,6 @@ public class PlayerMovement : MonoBehaviour
     public UnityEvent incrementScore;
     public UnityEvent gameOver;
     private float timer = 0.0f;
-
     void Awake()
     {
         // GameManager.instance.gameRestart.AddListener(GameRestart);
@@ -171,8 +170,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") && alive)
         {
-            // if collide top
-            if (marioPosition.position.y > other.transform.position.y + 0.2f)
+            if (marioPosition.position.y - GetComponent<BoxCollider2D>().bounds.extents.y > other.transform.position.y)
             {
                 incrementScore.Invoke();
                 goombaDeath.Invoke(other.transform.position);

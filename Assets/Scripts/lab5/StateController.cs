@@ -45,14 +45,7 @@ public abstract class StateController : MonoBehaviour
     // no action should be done here, strictly for transition
     public void TransitionToState(State nextState)
     {
-        if (nextState.name == "SmallMario")
-        {
-            Debug.Log("TRANSITION TO SMALLMARIO");
-        }
-        if (nextState.name == "SuperMario")
-        {
-            Debug.Log("TRANSITION TO SUPERMARIO");
-        }
+        Debug.Log("nextState: " + nextState);
         if (nextState == remainState) return;
 
         // The following two methods only happens once if nextState != remainstate

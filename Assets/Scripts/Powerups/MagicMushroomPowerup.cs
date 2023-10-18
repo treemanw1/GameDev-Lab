@@ -27,7 +27,8 @@ public class MagicMushroomPowerup : BasePowerup
         if (col.gameObject.CompareTag("Player") && spawned)
         {
             // TODO: do something when colliding with Player
-            gameObject.SetActive(false);
+            // gameObject.SetActive(false);
+            transform.position = new Vector3(1000, 0, 0);
             spawned = false;
             powerupCollected.Raise(this);
         }
