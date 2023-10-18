@@ -1,32 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-public class FireFlowerPowerup : BasePowerup
+
+public class StarPowerup : BasePowerup
 {
     private Vector3 ogPowerupPos;
-    private Vector3 ogFlowerPos;
+    private Vector3 ogStarPos;
     public Animator powerupAnimator;
     // public MarioStateController mario;
     public PowerupGameEvent powerupCollected;
     void Awake()
     {
         ogPowerupPos = transform.position;
-        ogFlowerPos = ogPowerupPos;
+        ogStarPos = ogPowerupPos;
     }
     protected override void Start()
     {
         base.Start(); // call base class Start()
         powerupAnimator.Play("idle");
-        this.type = PowerupType.FireFlower;
+        this.type = PowerupType.StarMan;
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Player") && spawned)
         {
-            Debug.Log("FireFlower collide");
-            Debug.Log(this);
             // TODO: do something when colliding with Player
             // gameObject.SetActive(false);
             transform.position = new Vector3(1000, 0, 0);
@@ -51,7 +49,7 @@ public class FireFlowerPowerup : BasePowerup
     public void GameRestart()
     {
         gameObject.SetActive(true);
-        transform.position = ogFlowerPos;
+        transform.position = ogStarPos;
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         // powerupAnimator.SetTrigger("reset");

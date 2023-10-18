@@ -28,7 +28,6 @@ public class FireAttackAction : Action
                 // Apply a rightward impulse force to the object
                 rb.AddForce(direction * impulseForce, ForceMode2D.Impulse);
             }
-
         }
 
     }

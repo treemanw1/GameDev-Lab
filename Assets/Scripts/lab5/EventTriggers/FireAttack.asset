@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db61840575cc3754ea39d2c799908011, type: 3}
   m_Name: FireAttack
   m_EditorClassIdentifier: 
-  maxPrefabInScene: 3
-  impulseForce: 1
-  degree: -10
+  maxPrefabInScene: 1
+  impulseForce: 3
+  degree: 0
   attackPrefab: {fileID: 2545812784683339371, guid: d03cd21220c625d4cb6b0f556ab1440d, type: 3}
   marioFaceRight: {fileID: 11400000, guid: 2b5a281f822a71244b1ed8f9008496b8, type: 2}

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52df22944d8de024790f4ff7c7497068, type: 3}
+  m_Name: Invincible
+  m_EditorClassIdentifier: 
+  setupActions:
+  - {fileID: 11400000, guid: 70a3ab5be5dcf464daf1d8f89bee4194, type: 2}
+  - {fileID: 11400000, guid: 23db08dff04f82346a906738f8cfb21f, type: 2}
+  actions: []
+  eventTriggeredActions: []
+  exitActions: []
+  transitions:
+  - decision: {fileID: 11400000, guid: a3a2c1dccc5226244b6c0ba95565cf94, type: 2}
+    trueState: {fileID: 11400000, guid: 567bde98cb06103408eef53a35e56403, type: 2}
+    falseState: {fileID: 11400000, guid: c4d83a165497ef943bb87098532888c5, type: 2}
+  sceneGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

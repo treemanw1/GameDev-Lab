@@ -30,7 +30,6 @@ public class ActionManager : MonoBehaviour
     // called twice, when pressed and unpressed
     public void OnJumpAction(InputAction.CallbackContext context)
     {
-        Debug.Log("Jump");
         if (context.started)
         {
             // Debug.Log("Jump was started");
@@ -90,7 +89,6 @@ public class ActionManager : MonoBehaviour
 
     public void OnFireAction(InputAction.CallbackContext context)
     {
-        Debug.Log("Fire");
         if (context.started)
         {
             fire.Invoke();

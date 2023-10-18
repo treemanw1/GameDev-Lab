@@ -3,27 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MarioStateController : StateController
+public class BuffStateController : StateController
 {
     public PowerupType currentPowerupType = PowerupType.Default;
-    public MarioState shouldBeNextState = MarioState.Default;
+    public BuffState buffState = BuffState.Default;
     private SpriteRenderer spriteRenderer;
     public GameConstants gameConstants;
+    // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
-        GameRestart(); // clear powerup in the beginning, go to start state
+        GameRestart();
     }
-
-    // this should be added to the GameRestart EventListener as callback
     public void GameRestart()
     {
-        // clear powerup
-        currentPowerupType = PowerupType.Default;
+        buffState = BuffState.Default;
         // set the start state
         TransitionToState(startState);
     }
-
     public void SetPowerup(PowerupType i)
     {
         currentPowerupType = i;
@@ -31,12 +28,13 @@ public class MarioStateController : StateController
     public void SetRendererToFlicker()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        Debug.Log(currentState.name);
         StartCoroutine(BlinkSpriteRenderer());
     }
     private IEnumerator BlinkSpriteRenderer()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        while (string.Equals(currentState.name, "InvincibleSmallMario", StringComparison.OrdinalIgnoreCase))
+        while (string.Equals(currentState.name, "Invincible", StringComparison.OrdinalIgnoreCase))
         {
             // Toggle the visibility of the sprite renderer
             spriteRenderer.enabled = !spriteRenderer.enabled;
@@ -44,11 +42,6 @@ public class MarioStateController : StateController
             // Wait for the specified blink interval
             yield return new WaitForSeconds(gameConstants.flickerInterval);
         }
-
         spriteRenderer.enabled = true;
-    }
-    public void Fire()
-    {
-        this.currentState.DoEventTriggeredActions(this, ActionType.Attack);
     }
 }

@@ -34,4 +34,23 @@ public class EnemyManager : MonoBehaviour
             }
         }
     }
+    public void GoombaFireballDeath(Vector3 position)
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.position.x == position.x)
+            {
+                // child.GetComponent<BoxCollider2D>().enabled = false;
+                child.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+
+                child.GetComponent<SpriteRenderer>().flipY = true;
+                deathAudio.PlayOneShot(deathAudio.clip);
+                child.gameObject.GetComponent<EnemyMovement>().Die();
+                child.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                break;
+            }
+        }
+    }
+
+
 }

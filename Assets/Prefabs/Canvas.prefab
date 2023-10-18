@@ -553,6 +553,8 @@ MonoBehaviour:
   pauseIcon: {fileID: 21300000, guid: 882941c8830faf64f88a2c5add283e42, type: 3}
   playIcon: {fileID: 21300000, guid: 1d6b54e1491968d49a1aa25830905221, type: 3}
   pauseOverlay: {fileID: 7833950096185710259}
+  gamePaused: {fileID: 11400000, guid: cc00db55d2fec094d9a8bc62e9d6bf1a, type: 2}
+  gameResumed: {fileID: 11400000, guid: 1469bb4ad279e2147863dac7105c4cde, type: 2}
 --- !u!1 &7583404720286635312
 GameObject:
   m_ObjectHideFlags: 0

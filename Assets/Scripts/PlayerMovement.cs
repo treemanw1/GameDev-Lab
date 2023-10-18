@@ -213,6 +213,7 @@ public class PlayerMovement : MonoBehaviour
     public void RequestPowerupEffect(PowerupInterface i)
     {
         GetComponent<MarioStateController>().SetPowerup(i.powerupType);
+        GetComponent<BuffStateController>().SetPowerup(i.powerupType);
     }
     public void DamageMario()
     {

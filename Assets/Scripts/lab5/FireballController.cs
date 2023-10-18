@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FireballController : MonoBehaviour
 {
@@ -34,9 +35,15 @@ public class FireballController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        // if (collision.gameObject.tag == "Enemy")
+        // {
+        //     Destroy(gameObject);
+        // }
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
         {
-            // destroy self
             Destroy(gameObject);
         }
     }

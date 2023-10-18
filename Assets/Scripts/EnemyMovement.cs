@@ -23,6 +23,7 @@ public class EnemyMovement : MonoBehaviour
     public SimpleGameEvent damagePlayer;
     public IntGameEvent incrementScore;
     public UnityEvent<Vector3> goombaDeath;
+    public UnityEvent<Vector3> goombaFireballDeath;
     void Awake()
     {
         ogLocalscale = transform.localScale;
@@ -85,6 +86,11 @@ public class EnemyMovement : MonoBehaviour
                 Debug.Log("Collide side!");
                 damagePlayer.Raise(this);
             }
+        }
+        else if (other.gameObject.CompareTag("Fireball"))
+        {
+            incrementScore.Raise(1);
+            goombaFireballDeath.Invoke(transform.position);
         }
     }
     public void GameRestart()
