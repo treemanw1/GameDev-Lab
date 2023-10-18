@@ -7,6 +7,6 @@ public class ButtonController : MonoBehaviour, InteractiveButton
     // implements the interface
     public void ButtonClick()
     {
-        GameManager.instance.GameRestart();
+        // GameManager.instance.GameRestart();
     }
 }

@@ -1,13 +1,15 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MagicMushroomPowerup : BasePowerup
 {
     private Vector3 ogPowerupPos;
     private Vector3 ogMushroomPos;
     public Animator powerupAnimator;
+    // public MarioStateController mario;
+    public PowerupGameEvent powerupCollected;
     void Awake()
     {
         ogPowerupPos = transform.position;
@@ -18,21 +20,16 @@ public class MagicMushroomPowerup : BasePowerup
         base.Start(); // call base class Start()
         powerupAnimator.ResetTrigger("reset");
         this.type = PowerupType.MagicMushroom;
-        // GameManager.instance.gameRestart.AddListener(GameRestart);
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.layer != 3)
-        {
-            Debug.Log(col.gameObject.name);
-        }
         if (col.gameObject.CompareTag("Player") && spawned)
         {
             // TODO: do something when colliding with Player
             gameObject.SetActive(false);
             spawned = false;
-            Debug.Log("Make mario big");
+            powerupCollected.Raise(this);
         }
         else if (col.gameObject.layer == 10) // else if hitting Pipe, flip travel direction
         {
@@ -53,11 +50,9 @@ public class MagicMushroomPowerup : BasePowerup
         rigidBody.AddForce(Vector2.right * 3, ForceMode2D.Impulse); // move to the right
     }
 
-
     // interface implementation
     public override void ApplyPowerup(MonoBehaviour i)
     {
-        // TODO: do something with the object
     }
     public void GameRestart()
     {

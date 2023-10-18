@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     public GameConstants gameConstants;
+    public BoolVariable marioFaceRight;
     float deathImpulse;
     float upSpeed;
     float maxSpeed;
@@ -35,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     public UnityEvent incrementScore;
     public UnityEvent gameOver;
     private float timer = 0.0f;
+
     void Awake()
     {
         // GameManager.instance.gameRestart.AddListener(GameRestart);
@@ -78,26 +80,29 @@ public class PlayerMovement : MonoBehaviour
         }
         marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.velocity.x));
     }
-
     void FlipMarioSprite(int value)
     {
         if (value == -1 && faceRightState)
         {
-            faceRightState = false;
-            marioSprite.flipX = true;
+            updateMarioShouldFaceRight(false);
+            marioSprite.flipX = !faceRightState;
             if (marioBody.velocity.x > 0.05f)
                 marioAnimator.SetTrigger("onSkid");
         }
 
         else if (value == 1 && !faceRightState)
         {
-            faceRightState = true;
-            marioSprite.flipX = false;
+            updateMarioShouldFaceRight(true);
+            marioSprite.flipX = !faceRightState;
             if (marioBody.velocity.x < -0.05f)
                 marioAnimator.SetTrigger("onSkid");
         }
     }
-
+    private void updateMarioShouldFaceRight(bool value)
+    {
+        faceRightState = value;
+        marioFaceRight.SetValue(faceRightState);
+    }
 
     void OnCollisionEnter2D(Collision2D col)
     {
@@ -175,10 +180,16 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 alive = false;
-                marioAnimator.Play("mario-die");
+                // marioAnimator.Play("mario-die");
                 marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
+                // gameOver.Invoke();
+                DamageMario();
             }
         }
+    }
+    public void DamageMario()
+    {
+        GetComponent<MarioStateController>().SetPowerup(PowerupType.Damage);
     }
     public void GameRestart()
     {
@@ -192,6 +203,8 @@ public class PlayerMovement : MonoBehaviour
         marioAnimator.SetTrigger("gameRestart");
         alive = true;
         timer = 0f;
+        onGroundState = true;
+        marioAnimator.SetBool("onGround", true);
         // reset camera position
         // gameCamera.transform.position = new Vector3(0, 0, -10);
     }

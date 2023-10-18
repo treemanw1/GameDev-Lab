@@ -71,6 +71,15 @@ public partial class @MarioActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""424a6c26-c9e3-4002-b577-ded1047f6e42"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -260,6 +269,17 @@ public partial class @MarioActions : IInputActionCollection2, IDisposable
                     ""action"": ""point"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d2afacbd-8e14-43c2-88fb-3a583025ec17"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""SuperMarioBros"",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -306,6 +326,7 @@ public partial class @MarioActions : IInputActionCollection2, IDisposable
         m_gameplay_JumpHold = m_gameplay.FindAction("JumpHold", throwIfNotFound: true);
         m_gameplay_click = m_gameplay.FindAction("click", throwIfNotFound: true);
         m_gameplay_point = m_gameplay.FindAction("point", throwIfNotFound: true);
+        m_gameplay_Fire = m_gameplay.FindAction("Fire", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -370,6 +391,7 @@ public partial class @MarioActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_gameplay_JumpHold;
     private readonly InputAction m_gameplay_click;
     private readonly InputAction m_gameplay_point;
+    private readonly InputAction m_gameplay_Fire;
     public struct GameplayActions
     {
         private @MarioActions m_Wrapper;
@@ -379,6 +401,7 @@ public partial class @MarioActions : IInputActionCollection2, IDisposable
         public InputAction @JumpHold => m_Wrapper.m_gameplay_JumpHold;
         public InputAction @click => m_Wrapper.m_gameplay_click;
         public InputAction @point => m_Wrapper.m_gameplay_point;
+        public InputAction @Fire => m_Wrapper.m_gameplay_Fire;
         public InputActionMap Get() { return m_Wrapper.m_gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -403,6 +426,9 @@ public partial class @MarioActions : IInputActionCollection2, IDisposable
                 @point.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPoint;
                 @point.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPoint;
                 @point.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPoint;
+                @Fire.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFire;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -422,6 +448,9 @@ public partial class @MarioActions : IInputActionCollection2, IDisposable
                 @point.started += instance.OnPoint;
                 @point.performed += instance.OnPoint;
                 @point.canceled += instance.OnPoint;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
             }
         }
     }
@@ -451,5 +480,6 @@ public partial class @MarioActions : IInputActionCollection2, IDisposable
         void OnJumpHold(InputAction.CallbackContext context);
         void OnClick(InputAction.CallbackContext context);
         void OnPoint(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
     }
 }

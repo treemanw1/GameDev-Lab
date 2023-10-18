@@ -9,6 +9,7 @@ public class ActionManager : MonoBehaviour
     public UnityEvent jump;
     public UnityEvent jumpHold;
     public UnityEvent<int> moveCheck;
+    public UnityEvent fire;
     // override public void Awake()
     // {
     //     base.Awake();
@@ -93,4 +94,20 @@ public class ActionManager : MonoBehaviour
         }
     }
 
+    public void OnFireAction(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            // Debug.Log("Jump was started");
+        }
+        else if (context.performed)
+        {
+            jump.Invoke();
+            // Debug.Log("Jump was performed");
+        }
+        else if (context.canceled)
+        {
+
+        }
+    }
 }
