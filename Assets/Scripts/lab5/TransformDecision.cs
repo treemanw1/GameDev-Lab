@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using System;
 [CreateAssetMenu(menuName = "PluggableSM/Decisions/Transform")]

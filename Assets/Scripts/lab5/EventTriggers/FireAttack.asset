@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db61840575cc3754ea39d2c799908011, type: 3}
-  m_Name: FireAttackAction
+  m_Name: FireAttack
   m_EditorClassIdentifier: 
   maxPrefabInScene: 3
   impulseForce: 1

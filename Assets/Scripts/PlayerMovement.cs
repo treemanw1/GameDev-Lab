@@ -34,12 +34,11 @@ public class PlayerMovement : MonoBehaviour
     public Transform marioPosition;
     public UnityEvent<Vector3> goombaDeath;
     public UnityEvent incrementScore;
-    public UnityEvent gameOver;
+    // public UnityEvent gameOver;
+    public SimpleGameEvent gameOver;
+    public FireAttackAction fireAttack;
+
     private float timer = 0.0f;
-    void Awake()
-    {
-        // GameManager.instance.gameRestart.AddListener(GameRestart);
-    }
     // Start is called before the first frame update
     void Start()
     {
@@ -74,10 +73,13 @@ public class PlayerMovement : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= .5f)
             {
-                gameOver.Invoke();
+                GameOverScene();
             }
         }
-        marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.velocity.x));
+        else
+        {
+            marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.velocity.x));
+        }
     }
     void FlipMarioSprite(int value)
     {
@@ -163,31 +165,32 @@ public class PlayerMovement : MonoBehaviour
             // jump higher
             marioBody.AddForce(Vector2.up * upSpeed * 30, ForceMode2D.Force);
             jumpedState = false;
-
         }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy") && alive)
-        {
-            if (marioPosition.position.y - GetComponent<BoxCollider2D>().bounds.extents.y > other.transform.position.y)
-            {
-                incrementScore.Invoke();
-                goombaDeath.Invoke(other.transform.position);
-            }
-            else
-            {
-                alive = false;
-                // marioAnimator.Play("mario-die");
-                marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
-                // gameOver.Invoke();
-                DamageMario();
-            }
-        }
+        // if (other.gameObject.CompareTag("Enemy") && alive)
+        // {
+        //     if (marioPosition.position.y - GetComponent<BoxCollider2D>().bounds.extents.y > other.transform.position.y)
+        //     {
+        //         incrementScore.Invoke();
+        //         goombaDeath.Invoke(other.transform.position);
+        //     }
+        //     else
+        //     {
+        //         if (GetComponent<MarioStateController>().currentState.name == "SmallMario")
+        //         {
+        //             alive = false;
+        //         }
+        //         DamageMario();
+        //     }
+        // }
     }
-    public void DamageMario()
+
+
+    public void GameOverScene()
     {
-        GetComponent<MarioStateController>().SetPowerup(PowerupType.Damage);
+        gameOver.Raise(this);
     }
     public void GameRestart()
     {
@@ -206,12 +209,30 @@ public class PlayerMovement : MonoBehaviour
         // reset camera position
         // gameCamera.transform.position = new Vector3(0, 0, -10);
     }
+
+    public void RequestPowerupEffect(PowerupInterface i)
+    {
+        GetComponent<MarioStateController>().SetPowerup(i.powerupType);
+    }
+    public void DamageMario()
+    {
+        GetComponent<MarioStateController>().SetPowerup(PowerupType.Damage);
+    }
+
+
     void PlayJumpSound()
     {
         marioAudio.PlayOneShot(marioAudio.clip);
     }
     void PlayDeathImpulse()
     {
+        marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
         marioBody.AddForce(Vector2.up * 30, ForceMode2D.Impulse);
     }
+
+    public void Die()
+    {
+        alive = false;
+    }
+
 }

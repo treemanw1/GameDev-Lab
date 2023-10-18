@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -18,7 +20,9 @@ public class EnemyMovement : MonoBehaviour
     public GameObject enemy;
     private float timer = 0.0f;
     public Vector3 ogLocalscale;
-
+    public SimpleGameEvent damagePlayer;
+    public IntGameEvent incrementScore;
+    public UnityEvent<Vector3> goombaDeath;
     void Awake()
     {
         ogLocalscale = transform.localScale;
@@ -68,7 +72,20 @@ public class EnemyMovement : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        // collide flatten goomba
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (other.transform.position.y - other.gameObject.GetComponent<BoxCollider2D>().bounds.extents.y > transform.position.y)
+            {
+                Debug.Log("Collide top!");
+                incrementScore.Raise(1);
+                goombaDeath.Invoke(transform.position);
+            }
+            else
+            {
+                Debug.Log("Collide side!");
+                damagePlayer.Raise(this);
+            }
+        }
     }
     public void GameRestart()
     {

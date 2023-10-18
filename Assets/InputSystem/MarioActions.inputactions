@@ -254,7 +254,7 @@
                     "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
-                    "groups": "SuperMarioBros",
+                    "groups": "SuperMarioBros;SMB",
                     "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false

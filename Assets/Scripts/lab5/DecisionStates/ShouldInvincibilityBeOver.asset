@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195ecdb1d33d7bf4eab8c19f6505b6e6, type: 3}
   m_Name: ShouldInvincibilityBeOver
   m_EditorClassIdentifier: 
-  buffDuration: 10
+  buffDuration: 2

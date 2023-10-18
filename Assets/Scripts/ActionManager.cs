@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -10,11 +9,6 @@ public class ActionManager : MonoBehaviour
     public UnityEvent jumpHold;
     public UnityEvent<int> moveCheck;
     public UnityEvent fire;
-    // override public void Awake()
-    // {
-    //     base.Awake();
-    //     Debug.Log("AM AWAKE");
-    // }
     public void OnJumpHoldAction(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -36,6 +30,7 @@ public class ActionManager : MonoBehaviour
     // called twice, when pressed and unpressed
     public void OnJumpAction(InputAction.CallbackContext context)
     {
+        Debug.Log("Jump");
         if (context.started)
         {
             // Debug.Log("Jump was started");
@@ -90,20 +85,19 @@ public class ActionManager : MonoBehaviour
         {
             Vector2 point = context.ReadValue<Vector2>();
             // Debug.Log($"Point detected: {point}");
-
         }
     }
 
     public void OnFireAction(InputAction.CallbackContext context)
     {
+        Debug.Log("Fire");
         if (context.started)
         {
-            // Debug.Log("Jump was started");
+            fire.Invoke();
         }
         else if (context.performed)
         {
-            jump.Invoke();
-            // Debug.Log("Jump was performed");
+            fire.Invoke();
         }
         else if (context.canceled)
         {

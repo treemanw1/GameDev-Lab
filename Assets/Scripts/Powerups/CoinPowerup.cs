@@ -6,21 +6,19 @@ using UnityEngine.Events;
 public class CoinPowerup : BasePowerup
 {
     public Animator powerupAnimator;
-    public UnityEvent incrementscore;
+    // public UnityEvent incrementScore;
+    public IntGameEvent incrementScore;
     protected override void Start()
     {
         base.Start(); // call base class Start()
         this.type = PowerupType.Coin;
         // GameManager.instance.gameRestart.AddListener(GameRestart);
     }
-    public void IncreaseScore()
-    {
-        incrementscore.Invoke();
-    }
     // interface implementation
     public override void SpawnPowerup()
     {
         spawned = true;
+        incrementScore.Raise(1);
     }
     // interface implementation
     public override void ApplyPowerup(MonoBehaviour i)

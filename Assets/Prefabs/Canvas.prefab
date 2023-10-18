@@ -1483,10 +1483,10 @@ GameObject:
   - component: {fileID: 8544261806065768727}
   - component: {fileID: 8544261806065768724}
   - component: {fileID: 283043678}
-  - component: {fileID: 283043684}
   - component: {fileID: 283043685}
   - component: {fileID: 283043686}
-  - component: {fileID: 283043687}
+  - component: {fileID: 283043684}
+  - component: {fileID: 504980787112465995}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1598,34 +1598,6 @@ MonoBehaviour:
   finalScoreText: {fileID: 8544261805753866391}
   restartButton: {fileID: 8544261804697946059}
   deathOverlay: {fileID: 8544261806185975725}
---- !u!114 &283043684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8544261806065768725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f1c3abe536f48a479370feeaf17da74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: bbd038eebb3b97d478226a74abf8635d, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 283043678}
-        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
-        m_MethodName: GameOver
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &283043685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1682,7 +1654,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &283043687
+--- !u!114 &283043684
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1691,20 +1663,48 @@ MonoBehaviour:
   m_GameObject: {fileID: 8544261806065768725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c2b4e461d43d9b408f94624efa71088, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f1c3abe536f48a479370feeaf17da74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: c3c1e110200ea5549a54fe3754fa52f4, type: 2}
+  Event: {fileID: 11400000, guid: bbd038eebb3b97d478226a74abf8635d, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 283043678}
         m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
-        m_MethodName: IncrementScore
-        m_Mode: 0
+        m_MethodName: GameOver
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &504980787112465995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8544261806065768725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1c3abe536f48a479370feeaf17da74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 76793f8ba22ee5449a2f67b5fd45698e, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

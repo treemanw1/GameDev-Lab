@@ -276,7 +276,7 @@ public partial class @MarioActions : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""SuperMarioBros"",
+                    ""groups"": ""SuperMarioBros;SMB"",
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

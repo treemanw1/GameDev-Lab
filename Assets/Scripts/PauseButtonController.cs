@@ -11,7 +11,8 @@ public class PauseButtonController : MonoBehaviour, InteractiveButton
     public Sprite playIcon;
     private Image image;
     public GameObject pauseOverlay;
-    // Start is called before the first frame update
+    public SimpleGameEvent gamePaused;
+    public SimpleGameEvent gameResumed;
     void Start()
     {
         image = GetComponent<Image>();
@@ -31,11 +32,13 @@ public class PauseButtonController : MonoBehaviour, InteractiveButton
         {
             image.sprite = playIcon;
             pauseOverlay.SetActive(true);
+            gamePaused.Raise(this);
         }
         else
         {
             image.sprite = pauseIcon;
             pauseOverlay.SetActive(false);
+            gameResumed.Raise(this);
         }
     }
 }
