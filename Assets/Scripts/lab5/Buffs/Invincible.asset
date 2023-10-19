@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Invincible
   m_EditorClassIdentifier: 
   setupActions:
-  - {fileID: 11400000, guid: 70a3ab5be5dcf464daf1d8f89bee4194, type: 2}
   - {fileID: 11400000, guid: 23db08dff04f82346a906738f8cfb21f, type: 2}
+  - {fileID: 11400000, guid: 70a3ab5be5dcf464daf1d8f89bee4194, type: 2}
   actions: []
   eventTriggeredActions: []
   exitActions: []

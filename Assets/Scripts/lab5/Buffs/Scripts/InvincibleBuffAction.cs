@@ -10,7 +10,6 @@ public class InvincibleBuffAction : Action
     {
         BuffStateController m = (BuffStateController)controller;
         m.gameObject.GetComponent<AudioSource>().PlayOneShot(invincibilityStart);
-        Debug.Log("Flicker");
         m.SetRendererToFlicker();
     }
 }

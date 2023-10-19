@@ -83,8 +83,15 @@ public class EnemyMovement : MonoBehaviour
             }
             else
             {
-                Debug.Log("Collide side!");
-                damagePlayer.Raise(this);
+                if (other.gameObject.GetComponent<BuffStateController>().currentState.name == "Invincible")
+                {
+                    incrementScore.Raise(1);
+                    goombaFireballDeath.Invoke(transform.position);
+                }
+                else
+                {
+                    damagePlayer.Raise(this);
+                }
             }
         }
         else if (other.gameObject.CompareTag("Fireball"))
@@ -96,6 +103,7 @@ public class EnemyMovement : MonoBehaviour
     public void GameRestart()
     {
         enemy.SetActive(true);
+        GetComponent<SpriteRenderer>().flipY = false;
         alive = true;
         GetComponent<BoxCollider2D>().enabled = true;
         transform.localPosition = startPosition;

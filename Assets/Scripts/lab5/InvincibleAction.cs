@@ -10,6 +10,7 @@ public class InvincibleAction : Action
     {
         MarioStateController m = (MarioStateController)controller;
         m.gameObject.GetComponent<AudioSource>().PlayOneShot(invincibilityStart);
+        m.gameObject.GetComponent<Animator>().SetBool("onGround", true);
         m.SetRendererToFlicker();
     }
 }

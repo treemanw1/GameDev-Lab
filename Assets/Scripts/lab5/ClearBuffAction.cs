@@ -7,5 +7,6 @@ public class ClearBuffAction : Action
     {
         BuffStateController b = (BuffStateController)controller;
         b.buffState = BuffState.Default;
+        b.currentPowerupType = PowerupType.Default;
     }
 }

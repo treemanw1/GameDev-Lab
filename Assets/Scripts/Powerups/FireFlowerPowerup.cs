@@ -25,8 +25,6 @@ public class FireFlowerPowerup : BasePowerup
     {
         if (col.gameObject.CompareTag("Player") && spawned)
         {
-            Debug.Log("FireFlower collide");
-            Debug.Log(this);
             // TODO: do something when colliding with Player
             // gameObject.SetActive(false);
             transform.position = new Vector3(1000, 0, 0);

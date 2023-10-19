@@ -28,7 +28,6 @@ public class BuffStateController : StateController
     public void SetRendererToFlicker()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        Debug.Log(currentState.name);
         StartCoroutine(BlinkSpriteRenderer());
     }
     private IEnumerator BlinkSpriteRenderer()
